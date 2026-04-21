@@ -1,4 +1,4 @@
-# SRS · `<System Name>` · v<0.1>
+<System Name>` · v<0.1>
 
 > **Software Requirements Specification** — structured per **ISO/IEC/IEEE 29148:2018** (supersedes IEEE 830-1998).
 > Used when: regulated industries (banking, medical, aviation, defence), government RFPs, long-lifecycle systems, formal contracts.
