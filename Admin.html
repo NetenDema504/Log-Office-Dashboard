@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Inventory System</title>
+    <link rel="stylesheet" href="Admin.css">
+</head>
+<body>
+
+<!-- Login Section -->
+<div class="login-container">
+    <h2>Office Inventory Login</h2>
+    <form>
+        <input type="email" placeholder="Enter Email" required>
+        <input type="password" placeholder="Enter Password" required>
+        
+        <div class="role-select">
+            <label>Select Role:</label>
+            <select>
+                <option>User</option>
+                <option>Admin</option>
+            </select>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard">
+
+    <header>
+        <h1>Inventory Dashboard</h1>
+    </header>
+
+    <!-- Add Item -->
+    <section class="add-item">
+        <h2>Add Inventory Item</h2>
+        <form>
+            <input type="text" placeholder="Item Name (Notepads, Snacks...)" required>
+            <input type="number" placeholder="Quantity" required>
+            <select>
+                <option>Stationery</option>
+                <option>Snacks</option>
+                <option>Office Supplies</option>
+            </select>
+            <button type="submit">Add Item</button>
+        </form>
+    </section>
+
+    <!-- Inventory List -->
+    <section class="inventory-list">
+        <h2>Available Inventory</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Notepad</td>
+                    <td>Stationery</td>
+                    <td>50</td>
+                    <td class="approved">Approved</td>
+                </tr>
+                <tr>
+                    <td>Snacks</td>
+                    <td>Food</td>
+                    <td>20</td>
+                    <td class="pending">Pending Admin</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Admin Verification -->
+    <section class="admin-panel">
+        <h2>Admin Verification</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Requested Qty</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Slippers</td>
+                    <td>10</td>
+                    <td>
+                        <button class="approve">Approve</button>
+                        <button class="reject">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+</body>
+</html>
