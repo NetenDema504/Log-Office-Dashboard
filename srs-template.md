@@ -4,7 +4,6 @@
 > Used when: regulated industries (banking, medical, aviation, defence), government RFPs, long-lifecycle systems, formal contracts.
 > Target length: 30–100+ pages. This template gives you the full skeleton — fill every subsection; if truly N/A, state so.
 
----
 
 ## § 01 · Introduction
 
