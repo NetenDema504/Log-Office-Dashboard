@@ -1,247 +1,230 @@
-<System Name>` · v<0.1>
+### Office Inventory System   Version: 1
 
-> **Software Requirements Specification** — structured per **ISO/IEC/IEEE 29148:2018** (supersedes IEEE 830-1998).
-> Used when: regulated industries (banking, medical, aviation, defence), government RFPs, long-lifecycle systems, formal contracts.
-> Target length: 30–100+ pages. This template gives you the full skeleton — fill every subsection; if truly N/A, state so.
+## Problem
+Organizations rely on manual methods like emails and spreadsheets to manage inventory requests, causing delays and confusion. This leads to poor tracking, lack of transparency, and inefficient stock management.
 
+## 3. Persona
+**Name:** Selise  
+**Role:** Admin Officer  
 
-## § 01 · Introduction
+**Pain Points:**
+- No real-time stock
+- Duplicate requests
+- Manual approvals
 
-### 1.1 · Purpose
-State the purpose of this SRS and the intended readership (developers, testers, auditors, regulators, customer).
+## 4. User Stories
+
+### Employee
+As an employee, I want to request items and track status so that I avoid delays.
+
+### Admin
+As an admin, I want to approve/reject requests and manage stock efficiently.
+
+### 01 · Introduction
 
 ### 1.2 · Scope of the Product
-- **Product name:** `<official name>`
-- **What the product will do:** `<one paragraph>`
-- **What the product will NOT do:** `<one paragraph — scope boundaries>`
-- **Benefits / goals:** `<business outcomes>`
-- **Applicability:** `<target users, deployment contexts>`
+This SRS defines the requirements for the Office Inventory System and serves as a guide for its design and development. It is intended for developers, testers, auditors, regulators, and customers to understand and validate the system.
+
+### Product Name: Office Inventory System  
+
+- **What the product will do:**  
+The system will allow employees to request office items online and track their request status. Admin users can review, approve, or reject requests and manage inventory in real time. The system improves visibility, reduces delays, and ensures proper stock management.
+
+- **What the product will NOT do:**  
+The system will not include vendor purchasing, external supplier integration, or AI-based demand prediction in this phase. It will not support multi-branch inventory syncing.
+
+- **Benefits / Goals:**  
+- Faster request processing  
+- Better stock control  
+- Reduced manual work  
+- Improved transparency  
+- Better planning and reporting  
+
+- **Applicability:**  
+Used by employees and administrators in offices. Can be deployed as a web application on desktop and laptop.
 
 ### 1.3 · Definitions, Acronyms, Abbreviations
+
 | Term | Meaning |
 |---|---|
 | SRS | Software Requirements Specification |
-| `<acronym>` | `<expansion>` |
+| UI | User Interface |
+| API | Application Programming Interface |
+| DB | Database |
 
 ### 1.4 · References
-Numbered list of every document this SRS references: standards, regulations, interfacing-system specs, prior versions.
 
-1. ISO/IEC/IEEE 29148:2018 · Systems and software engineering — Life cycle processes — Requirements engineering
-2. `<regulation citation>`
-3. `<interfacing system SRS>`
+1. ISO/IEC/IEEE 29148:2018 — Requirements Engineering  
+2. Internal Office Inventory Policy  
+3. Previous manual inventory records  
 
 ### 1.5 · Overview of this Document
-One short paragraph: what each remaining section contains. Readers use this as a navigation map.
 
----
+This document describes the system overview, features, requirements, and constraints. It helps developers, testers, and stakeholders understand and build the system correctly.
+
 
 ## § 02 · Overall Description
 
-*The "big picture" section. Non-specialists read this and specialists skim it.*
-
 ### 2.1 · Product Perspective
-Is this system standalone, a component of a larger system, a replacement for an existing system? Include a **context diagram** showing this system and its interfaces to external systems, users, and hardware.
 
-- **System interfaces:** `<list external systems this connects to>`
-- **User interfaces:** `<web · mobile · kiosk · API>`
-- **Hardware interfaces:** `<sensors · printers · POS terminals>`
-- **Software interfaces:** `<OS · databases · third-party APIs · versions>`
-- **Communication interfaces:** `<HTTP/REST · MQTT · SFTP · protocols>`
-- **Memory / storage constraints:** `<if applicable>`
-- **Operations:** `<modes — normal, degraded, maintenance>`
-- **Site adaptation:** `<per-deployment configuration>`
+This system is a standalone web application replacing manual inventory processes.
+
+- **System interfaces:** Email notifications, database  
+- **User interfaces:** Web (desktop & mobile)  
+- **Hardware interfaces:** None specific  
+- **Software interfaces:** Browser, database (MySQL/PostgreSQL)  
+- **Communication interfaces:** HTTP/REST  
+- **Operations:** Normal, maintenance  
+- **Site adaptation:** Configurable for different offices  
 
 ### 2.2 · Product Functions
-A summary of the **major functions** the product will perform. Two or three paragraphs, or a bulleted list of function groups. Details go in §3.
+
+Main functions include:
+- Submit inventory requests  
+- Approve or reject requests  
+- Update stock automatically  
+- View dashboards and reports  
+- Send notifications  
 
 ### 2.3 · User Characteristics
-Describe each class of user: education level, experience, expertise, frequency of use, privilege level. Drives UX, training, and help-system requirements.
 
 | User Class | Description | Expertise | Frequency |
 |---|---|---|---|
-| `<admin>` | `<who>` | Expert | Daily |
-| `<end-user>` | `<who>` | Novice | Weekly |
-| `<auditor>` | `<who>` | Expert | Quarterly |
+| Admin | Manages inventory | Expert | Daily |
+| Employee | Requests items | Basic | Weekly |
+| Auditor | Reviews reports | Expert | Monthly |
 
 ### 2.4 · Constraints
-Constraints the designer is required to honour. Include:
-- Regulatory policies
-- Hardware limitations
-- Interfaces to other applications
-- Parallel operation requirements
-- Audit functions
-- Control functions
-- Higher-order-language requirements
-- Signal-handshake protocols
-- Reliability requirements
-- Criticality of the application
-- Safety and security considerations
+
+- Must run on web browsers  
+- Must support role-based access  
+- Must ensure data security  
+- Limited to internal office use  
 
 ### 2.5 · Assumptions and Dependencies
-Factors that are not design constraints but affect the requirements. If any of these change, the requirements must be reviewed.
 
-- `<third-party API will remain available>`
-- `<regulation X will not change before launch>`
-- `<user browsers will support ECMAScript 2020+>`
+- Internet connection is available  
+- Users have login access  
+- Database server is stable  
 
 ### 2.6 · Apportioning of Requirements
-Which requirements may be delayed to future versions.
-
----
+Future versions may include:
+- Vendor integration  
+- AI forecasting  
+- Multi-branch support  
 
 ## § 03 · Specific Requirements
 
-*The heart of the SRS. Every requirement must be: correct, unambiguous, complete, consistent, ranked for importance/stability, verifiable, modifiable, traceable.*
-
-### 3.1 · External Interface Requirements
+ 3.1 · External Interface Requirements
 
 #### 3.1.1 · User Interfaces
-- Screen layouts (reference wireframes)
-- UI standards (style guide compliance)
-- Screen / message format
-- Standard buttons, functions, or navigation
-- Error-message display
+- Simple dashboard  
+- Request forms  
+- Status indicators (Pending, Approved, Rejected)  
+- Notification messages  
 
 #### 3.1.2 · Hardware Interfaces
-- Supported device types, logical / physical characteristics
-- Data / control interactions
-- Communication protocols
+- Not required  
 
 #### 3.1.3 · Software Interfaces
-For each external software component:
-- Name · mnemonic · specification number · version · source
-- Discussion of purpose
-- Definition of the interface (messages, data, semantics)
+- Database system (MySQL/PostgreSQL)  
+- Backend server (Node.js/Django)  
 
 #### 3.1.4 · Communications Interfaces
-- Network protocols
-- Electronic forms / email
-- Synchronous vs asynchronous
-- Communication standards (HTTP/2, gRPC, etc.)
-- Security/encryption (TLS 1.3, mTLS)
+- HTTP/HTTPS  
+- Secure login system  
+
+---
 
 ### 3.2 · Functional Requirements
 
-Each requirement is uniquely identified, testable, and traced to a user need.
+#### FR-01 · Submit Request
+- **Description:** User submits request  
+- **Inputs:** Item name, quantity, purpose  
+- **Processing:** Save as Pending  
+- **Outputs:** Confirmation message  
+- **Priority:** Must.
 
-#### FR-01 · `<Requirement name>`
-- **Description:** `<one-sentence summary>`
-- **Inputs:** `<sources · quantities · units · timing · valid ranges · accuracy>`
-- **Processing:** `<validity checks · response to abnormal conditions · sequence · timing>`
-- **Outputs:** `<destinations · format · timing · units>`
-- **Preconditions:** `<state before>`
-- **Postconditions:** `<state after>`
-- **Error handling:** `<response to each failure mode>`
-- **Priority:** Must / Should / Could
-- **Traces to:** `<business need · stakeholder>`
+#### FR-02 · Approve Request
+- **Description:** Admin approves request  
+- **Processing:** Update status and reduce stock  
+- **Priority:** Must  
 
-#### FR-02 · ...
+#### FR-03 · Reject Request
+- **Description:** Admin rejects request  
+- **Outputs:** Feedback message  
+- **Priority:** Must  
 
-*(Repeat for every functional requirement. Numbered sections allow traceability to tests.)*
+#### FR-04 · View Dashboard
+- **Description:** Users view request status  
+- **Priority:** Must  
 
 ### 3.3 · Non-Functional Requirements
 
-#### 3.3.1 · Performance Requirements
-- `<static: number of users · records · transactions>`
-- `<dynamic: throughput · response time · p95 / p99 latency>`
-- **Measurable, testable.**
+#### 3.3.1 · Performance
+- System should respond within 2 seconds  
+- Support multiple users  
 
-#### 3.3.2 · Safety Requirements
-Requirements to prevent loss, damage, or harm. Often tied to standards (IEC 61508, ISO 26262, IEC 62304).
+#### 3.3.2 · Safety
+- Prevent data loss  
 
-#### 3.3.3 · Security Requirements
-- Authentication · authorisation · roles
-- Data encryption at rest and in transit
-- Audit logging
-- Session management
-- Compliance standards (PCI-DSS, HIPAA, GDPR, SOC 2)
+#### 3.3.3 · Security
+- Login authentication  
+- Role-based access  
+- Data encryption  
 
 #### 3.3.4 · Software Quality Attributes
+
 | Attribute | Requirement |
 |---|---|
-| Reliability | `<MTBF · MTTR · failure modes>` |
-| Availability | `<uptime %, maintenance windows>` |
-| Maintainability | `<modularity · update cadence>` |
-| Portability | `<platforms supported>` |
-| Usability | `<training time · task completion · error rate>` |
-| Accessibility | `<WCAG level · keyboard · screen reader>` |
+| Reliability | System should run without failure |
+| Availability | 99% uptime |
+| Usability | Easy to use |
+| Portability | Works on browsers |
 
 #### 3.3.5 · Business Rules
-Operating principles that aren't features but constrain behaviour. E.g., "Only a manager can approve a transfer over BTN 100,000."
-
-### 3.4 · System Features *(alternative to §3.2 for feature-organised systems)*
-
-For feature-oriented systems, organise by feature instead of type.
-
-#### Feature 1 — `<name>`
-- **Description and priority**
-- **Stimulus / response sequences**
-- **Functional requirements** (FR-F1-01, FR-F1-02, …)
+- Only admin can approve requests  
+- Stock must update after approval  
 
 ### 3.5 · Other Requirements
 
-#### 3.5.1 · Database Requirements
-Types of information to be stored, frequency of use, accessing capabilities, data entities and relationships, integrity constraints, data retention.
+#### Database Requirements
+- Store users, requests, inventory  
+- Maintain request history  
 
-#### 3.5.2 · Internationalisation / Localisation
-Languages, regions, currency, date/time formats, right-to-left support.
-
-#### 3.5.3 · Legal, Regulatory, Compliance
-Specific statutes and standards the system must comply with.
-
----
+#### Legal / Compliance
+- Follow basic data protection rules  
 
 ## § 04 · Verification
 
-How each requirement will be verified. **Every requirement traces to one or more verification methods.**
-
-| Req ID | Verification Method | Acceptance Criterion |
+| Req ID | Method | Acceptance |
 |---|---|---|
-| FR-01 | Test | `<measurable pass/fail>` |
-| FR-02 | Demonstration | `<observable outcome>` |
-| NFR-3.3.1 | Analysis | `<simulation / model>` |
-| NFR-3.3.3 | Inspection | `<review against standard>` |
-
-**Methods:** Test · Demonstration · Inspection · Analysis (T/D/I/A).
-
----
+| FR-01 | Test | Request saved as Pending |
+| FR-02 | Test | Stock updated |
+| FR-03 | Test | Rejection message shown |
 
 ## § 05 · Appendices
 
-### A. Analysis Models
-Use-case diagrams, activity diagrams, data-flow diagrams, state diagrams, ER diagrams — whichever best communicate the system.
+### A. Models
+- Use case diagrams  
+- Flow diagrams  
 
-### B. Requirements Traceability Matrix
-Map every requirement upwards (to business need / regulation) and downwards (to design element / test case).
+### B. Traceability Matrix
 
-| Req ID | Source (business need) | Design Element | Test Case(s) | Status |
-|---|---|---|---|---|
-| FR-01 | BR-02 · regulation § X | Module A | TC-01, TC-02 | Approved |
-
-### C. Issues List
-Open issues pending resolution before the SRS is baselined.
-
-### D. Glossary
-Domain-specific terms used throughout.
-
----
+| Req ID | Source | Test |
+|---|---|---|
+| FR-01 | User Need | TC-01 |
 
 ## Changelog
 
-- `v0.1` · initial draft · `<author>` · `YYYY-MM-DD`
-- `v0.5` · §3 complete, verification matrix added · `YYYY-MM-DD`
-- `v1.0` · baselined; signed off by `<reviewers>` · `YYYY-MM-DD`
+- v1 Initial Draft  
 
----
 
 ## Sign-off
 
-| Role | Name | Signature | Date |
-|---|---|---|---|
-| Author (BA) | | | |
-| Dev Lead | | | |
-| QA Lead | | | |
-| Architect | | | |
-| Product Owner | | | |
-| Compliance / QA Assurance | | | |
-| Customer Representative | | | |
+| Role | Name | Date |
+| Author | Neten Dema | 21/4/2026 |
+| Developer | Tshewang Choden |25/4/2026  |
+| Tester |Dawa Zangmo  | 30/4/2026 |
+
+
