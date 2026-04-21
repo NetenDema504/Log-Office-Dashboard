@@ -1,9 +1,6 @@
-#  Inventory Login Portal  Version : 1
-
-
-## § 01 · Introduction
-
-### 1.1 · Purpose
+Inventory Login Portal  Version : 1
+01 · Introduction
+ 1.1 · Purpose
 This document provides a detailed description of the requirements for the Inventory Login Portal. It is intended for developers, testers, project managers, and stakeholders to understand system functionality, constraints, and expected behavior. It will also serve as a reference for system validation and future enhancements.
 
 ### 1.2 · Scope of the Product
@@ -226,9 +223,5 @@ Login Portal: Entry point to systeM
 
 
 
-
-
-
-§
 
 
