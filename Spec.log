@@ -1,0 +1,234 @@
+#  Inventory Login Portal  Version : 1
+
+
+## § 01 · Introduction
+
+### 1.1 · Purpose
+This document provides a detailed description of the requirements for the Inventory Login Portal. It is intended for developers, testers, project managers, and stakeholders to understand system functionality, constraints, and expected behavior. It will also serve as a reference for system validation and future enhancements.
+
+### 1.2 · Scope of the Product
+Product name: Inventory Login Portal
+
+What the product will do:
+The Inventory Login Portal is a web-based interface that allows users to securely log in to an office inventory management system. It collects user credentials including email, password, and division, validates the inputs, and prepares authentication for accessing inventory-related features such as requesting items and managing stock.
+
+What the product will NOT do:
+The system will not handle full inventory management operations such as adding, updating, or deleting inventory items. It will not provide advanced authentication like biometric login or multi-factor authentication in the current version. It also does not include backend authentication or database integration in this phase.
+
+Benefits / goals:
+The system aims to simplify user access to the inventory platform, ensure basic validation of login credentials, and provide a clean, responsive user interface for better user experience.
+
+Applicability:
+This system is intended for office employees, administrators, and staff who need access to the inventory management system through a web browser.
+
+### 1.3 · Definitions, Acronyms, Abbreviations
+| Term | Meaning                             |
+| ---- | ----------------------------------- |
+| SRS  | Software Requirements Specification |
+| UI   | User Interface                      |
+| HTML | HyperText Markup Language           |
+| CSS  | Cascading Style Sheets              |
+| Auth | Authentication                      |
+
+### 1.4 · References
+ISO/IEC/IEEE 29148:2018 — Requirements Engineering
+HTML5 Specification
+CSS3 Specification
+
+### 1.5 · Overview of this Document
+This document describes the system from a high-level overview to detailed functional and non-functional requirements. Section 2 explains the overall system, Section 3 defines detailed requirements, Section 4 explains verification, and Section 5 includes supporting materials.
+
+##  02 · Overall Description
+
+### 2.1 · Product Perspective
+The Inventory Login Portal is a standalone front-end module that will later integrate with a backend authentication system.
+
+System interfaces: Backend authentication server (future)
+User interfaces: Web browser interface
+Hardware interfaces: Desktop and laptop
+Software interfaces: Web browsers (Chrome, Edge, Firefox)
+Communication interfaces: HTTP/HTTPS
+Memory constraints: Minimal (lightweight frontend)
+Operations: Normal mode only
+Site adaptation: Responsive design for different screen sizes
+
+### 2.2 · Product Functions
+
+The system provides the following major functions:
+
+Display login interface
+Accept user credentials (email, password, division)
+Validate required fields
+Submit login form
+Provide basic UI feedback
+
+###2.3 · User Characteristics
+
+| User Class | Description              | Expertise | Frequency    |
+| ---------- | ------------------------ | --------- | ------------ |
+| Admin      | Manages inventory system | Expert    | Daily        |
+| Employee   | Requests inventory items | Basic     | Weekly       |
+| IT Support | Maintains system         | Expert    | Occasionally |
+
+
+
+###2.4 · Constraints
+Must be developed using HTML and CSS
+Must run on modern web browsers
+No backend integration in current version
+Must be responsive
+Must follow basic UI/UX standards
+
+###2.5 · Assumptions and Dependencies
+Users have internet access
+Browsers support modern HTML5 and CSS3
+Backend authentication will be implemented later
+
+###2.6 · Apportioning of Requirements
+
+Future versions may include:
+Microsoft login integration
+Backend authentication
+Role-based access
+
+
+## § 03 · Specific Requirements
+
+####3.1 · External Interface Requirements
+
+###3.1.1 · User Interfaces
+Clean login form layout
+Input fields for email, password, division
+Login button
+Responsive design
+Error messages for invalid input
+
+### 3.1.2 · Hardware Interfaces
+Compatible with desktop and laptop
+
+3.1.3 · Software Interfaces
+Web browsers (Chrome, Edge, Firefox)
+
+### 3.1.4 · Communications Interfaces
+HTTP/HTTPS protocol
+
+3.2 · Functional Requirements
+FR-01 · User Login Input
+Description: System allows users to input login credentials
+Inputs: Email, Password, Division
+Processing: Validate non-empty fields
+Outputs: Form submission
+Preconditions: Page loaded
+Postconditions: Data submitted
+Error handling: Show validation message
+Priority: Must
+
+FR-02 · Form Validation
+Description: Ensure all fields are filled
+Inputs: User input fields
+Processing: Check empty values
+Outputs: Error message if invalid
+Priority: Must
+
+FR-03 · Responsive Design
+Description: UI adapts to screen sizes
+Priority: Should
+
+####3.3 · Non-Functional Requirements
+### 3.3.1 · Performance Requirements
+Page load time < 2 seconds
+
+### 3.3.2 · Safety Requirements
+No critical safety risks
+
+3.3.3 · Security Requirements
+Password field must be hidden
+Data transmitted via HTTPS (future)
+
+###3.3.4 · Software Quality Attributes
+| Attribute       | Requirement                 |
+| --------------- | --------------------------- |
+| Reliability     | Minimal UI errors           |
+| Availability    | 99% uptime                  |
+| Maintainability | Clean code structure        |
+| Portability     | Works on all browsers       |
+| Usability       | Easy to use                 |
+| Accessibility   | Basic accessibility support |
+
+
+
+### 3.3.5 · Business Rules
+All fields are mandatory before login
+
+####3.5 · Other Requirements
+### 3.5.1 · Database Requirements
+Not applicable in current version
+
+### 3.5.2 · Internationalisation
+English language support
+
+3.5.3 · Legal, Regulatory, Compliance
+Must follow basic web standards
+
+
+## § 04 · Verification
+| Req ID | Method        | Acceptance Criterion |
+| ------ | ------------- | -------------------- |
+| FR-01  | Test          | User can input data  |
+| FR-02  | Test          | Empty fields blocked |
+| FR-03  | Demonstration | UI adjusts to screen |
+
+
+
+## § 05 · Appendices
+A. Analysis Models
+Basic UI layout (login form)
+
+B. Requirements Traceability Matrix
+| Req ID | Source     | Test Case | Status  |
+| ------ | ---------- | --------- | ------- |
+| FR-01  | Login need | TC-01     | Pending |
+| FR-02  | Validation | TC-02     | Pending |
+
+
+C. Issues List
+Missing backend integration
+No authentication system yet
+
+D. Glossary
+Login Portal: Entry point to systeM
+
+
+## Changelog
+ Version 1 · Initial draft · 2026-04-21
+
+
+## Sign-off
+| Role          | Name | Signature | Date |
+| ------------- | ---- | --------- | ---- |
+| Author        |   Neten Dema   |           | 21/4/2026     |
+| Developer     |   Tshewang Choden   |           |   25/4/2026   |
+| QA            |    Dawa Zangmo  |           |      |30/4/2026
+| Product Owner |      |   Pema        |      |1/5/2026
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+§
+
+
